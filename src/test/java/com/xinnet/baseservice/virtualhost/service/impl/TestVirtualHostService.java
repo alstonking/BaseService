@@ -24,7 +24,9 @@ public class TestVirtualHostService {
     @Autowired
     private VirtualHostPreService virtualHostPreService;
 
-
+    /**
+     * test github
+     */
     @Test
     @Rollback(false)
     public void testAddVirtualHostPreInfo() {
