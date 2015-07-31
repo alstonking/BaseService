@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinnet.baseservice.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.xinnet.baseservice.entity.Goods">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="GOODS_NAME" jdbcType="VARCHAR" property="goodsName" />
+    <result column="GOODS_CODE" jdbcType="VARCHAR" property="goodsCode" />
+    <result column="PRODUCT_CODE" jdbcType="VARCHAR" property="productCode" />
+    <result column="GOODS_TYPE" jdbcType="VARCHAR" property="goodsType" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="BEGIN_TIME" jdbcType="DATE" property="beginTime" />
+    <result column="END_TIME" jdbcType="DATE" property="endTime" />
+    <result column="RENEW_TYPE" jdbcType="CHAR" property="renewType" />
+    <result column="UPGRADE_TYPE" jdbcType="CHAR" property="upgradeType" />
+    <result column="REGION_TYPE" jdbcType="CHAR" property="regionType" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="PRICE_TYPE" jdbcType="CHAR" property="priceType" />
+    <result column="GUIDING_PRICE" jdbcType="DECIMAL" property="guidingPrice" />
+    <result column="PLAT_STATE" jdbcType="VARCHAR" property="platState" />
+    <result column="PLAT_DESC" jdbcType="VARCHAR" property="platDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, GOODS_NAME, GOODS_CODE, PRODUCT_CODE, GOODS_TYPE, STATE, BEGIN_TIME, END_TIME, 
+    RENEW_TYPE, UPGRADE_TYPE, REGION_TYPE, DESCRIPTION, PRICE_TYPE, GUIDING_PRICE, PLAT_STATE, 
+    PLAT_DESC
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from GOODS_GOODS
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from GOODS_GOODS
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xinnet.baseservice.entity.Goods">
+    insert into GOODS_GOODS (ID, GOODS_NAME, GOODS_CODE, 
+      PRODUCT_CODE, GOODS_TYPE, STATE, 
+      BEGIN_TIME, END_TIME, RENEW_TYPE, 
+      UPGRADE_TYPE, REGION_TYPE, DESCRIPTION, 
+      PRICE_TYPE, GUIDING_PRICE, PLAT_STATE, 
+      PLAT_DESC)
+    values (#{id,jdbcType=DECIMAL}, #{goodsName,jdbcType=VARCHAR}, #{goodsCode,jdbcType=VARCHAR}, 
+      #{productCode,jdbcType=VARCHAR}, #{goodsType,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{beginTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, #{renewType,jdbcType=CHAR}, 
+      #{upgradeType,jdbcType=CHAR}, #{regionType,jdbcType=CHAR}, #{description,jdbcType=VARCHAR}, 
+      #{priceType,jdbcType=CHAR}, #{guidingPrice,jdbcType=DECIMAL}, #{platState,jdbcType=VARCHAR}, 
+      #{platDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinnet.baseservice.entity.Goods">
+    insert into GOODS_GOODS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="goodsName != null">
+        GOODS_NAME,
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE,
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE,
+      </if>
+      <if test="goodsType != null">
+        GOODS_TYPE,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="beginTime != null">
+        BEGIN_TIME,
+      </if>
+      <if test="endTime != null">
+        END_TIME,
+      </if>
+      <if test="renewType != null">
+        RENEW_TYPE,
+      </if>
+      <if test="upgradeType != null">
+        UPGRADE_TYPE,
+      </if>
+      <if test="regionType != null">
+        REGION_TYPE,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="priceType != null">
+        PRICE_TYPE,
+      </if>
+      <if test="guidingPrice != null">
+        GUIDING_PRICE,
+      </if>
+      <if test="platState != null">
+        PLAT_STATE,
+      </if>
+      <if test="platDesc != null">
+        PLAT_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="renewType != null">
+        #{renewType,jdbcType=CHAR},
+      </if>
+      <if test="upgradeType != null">
+        #{upgradeType,jdbcType=CHAR},
+      </if>
+      <if test="regionType != null">
+        #{regionType,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="priceType != null">
+        #{priceType,jdbcType=CHAR},
+      </if>
+      <if test="guidingPrice != null">
+        #{guidingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="platState != null">
+        #{platState,jdbcType=VARCHAR},
+      </if>
+      <if test="platDesc != null">
+        #{platDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinnet.baseservice.entity.Goods">
+    update GOODS_GOODS
+    <set>
+      <if test="goodsName != null">
+        GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        BEGIN_TIME = #{beginTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        END_TIME = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="renewType != null">
+        RENEW_TYPE = #{renewType,jdbcType=CHAR},
+      </if>
+      <if test="upgradeType != null">
+        UPGRADE_TYPE = #{upgradeType,jdbcType=CHAR},
+      </if>
+      <if test="regionType != null">
+        REGION_TYPE = #{regionType,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="priceType != null">
+        PRICE_TYPE = #{priceType,jdbcType=CHAR},
+      </if>
+      <if test="guidingPrice != null">
+        GUIDING_PRICE = #{guidingPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="platState != null">
+        PLAT_STATE = #{platState,jdbcType=VARCHAR},
+      </if>
+      <if test="platDesc != null">
+        PLAT_DESC = #{platDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinnet.baseservice.entity.Goods">
+    update GOODS_GOODS
+    set GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+      GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      BEGIN_TIME = #{beginTime,jdbcType=DATE},
+      END_TIME = #{endTime,jdbcType=DATE},
+      RENEW_TYPE = #{renewType,jdbcType=CHAR},
+      UPGRADE_TYPE = #{upgradeType,jdbcType=CHAR},
+      REGION_TYPE = #{regionType,jdbcType=CHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      PRICE_TYPE = #{priceType,jdbcType=CHAR},
+      GUIDING_PRICE = #{guidingPrice,jdbcType=DECIMAL},
+      PLAT_STATE = #{platState,jdbcType=VARCHAR},
+      PLAT_DESC = #{platDesc,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

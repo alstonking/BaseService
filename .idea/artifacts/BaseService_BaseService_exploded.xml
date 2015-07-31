@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="BaseService:BaseService exploded">
+    <root id="root">
+      <element id="javaee-facet-resources" facet="BaseService/web/BaseService" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="BaseService" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinnet.baseservice.mapper.VirtualHostSubProductMapper">
+  <resultMap id="BaseResultMap" type="com.xinnet.baseservice.entity.VirtualHostSubProduct">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="SUB_SERVICE_CODE" jdbcType="VARCHAR" property="subServiceCode" />
+    <result column="SERVICE_CODE" jdbcType="VARCHAR" property="serviceCode" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+    <result column="PRODUCT_CODE" jdbcType="VARCHAR" property="productCode" />
+    <result column="GOODS_CODE" jdbcType="VARCHAR" property="goodsCode" />
+    <result column="BUY_TIME" jdbcType="DATE" property="buyTime" />
+    <result column="OVER_TIME" jdbcType="DATE" property="overTime" />
+    <result column="START_TIME" jdbcType="DATE" property="startTime" />
+    <result column="SUB_TYPE" jdbcType="VARCHAR" property="subType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SUB_SERVICE_CODE, SERVICE_CODE, DOMAIN_NAME, PRODUCT_CODE, GOODS_CODE, BUY_TIME, 
+    OVER_TIME, START_TIME, SUB_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SERVICE_VIRTUALHOSTSUBPRODUCT
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from SERVICE_VIRTUALHOSTSUBPRODUCT
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xinnet.baseservice.entity.VirtualHostSubProduct">
+    insert into SERVICE_VIRTUALHOSTSUBPRODUCT (ID, SUB_SERVICE_CODE, SERVICE_CODE, 
+      DOMAIN_NAME, PRODUCT_CODE, GOODS_CODE, 
+      BUY_TIME, OVER_TIME, START_TIME, 
+      SUB_TYPE)
+    values (#{id,jdbcType=DECIMAL}, #{subServiceCode,jdbcType=VARCHAR}, #{serviceCode,jdbcType=VARCHAR}, 
+      #{domainName,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, #{goodsCode,jdbcType=VARCHAR}, 
+      #{buyTime,jdbcType=DATE}, #{overTime,jdbcType=DATE}, #{startTime,jdbcType=DATE}, 
+      #{subType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinnet.baseservice.entity.VirtualHostSubProduct">
+    insert into SERVICE_VIRTUALHOSTSUBPRODUCT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="subServiceCode != null">
+        SUB_SERVICE_CODE,
+      </if>
+      <if test="serviceCode != null">
+        SERVICE_CODE,
+      </if>
+      <if test="domainName != null">
+        DOMAIN_NAME,
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE,
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE,
+      </if>
+      <if test="buyTime != null">
+        BUY_TIME,
+      </if>
+      <if test="overTime != null">
+        OVER_TIME,
+      </if>
+      <if test="startTime != null">
+        START_TIME,
+      </if>
+      <if test="subType != null">
+        SUB_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="subServiceCode != null">
+        #{subServiceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCode != null">
+        #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="domainName != null">
+        #{domainName,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buyTime != null">
+        #{buyTime,jdbcType=DATE},
+      </if>
+      <if test="overTime != null">
+        #{overTime,jdbcType=DATE},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="subType != null">
+        #{subType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinnet.baseservice.entity.VirtualHostSubProduct">
+    update SERVICE_VIRTUALHOSTSUBPRODUCT
+    <set>
+      <if test="subServiceCode != null">
+        SUB_SERVICE_CODE = #{subServiceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCode != null">
+        SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="domainName != null">
+        DOMAIN_NAME = #{domainName,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buyTime != null">
+        BUY_TIME = #{buyTime,jdbcType=DATE},
+      </if>
+      <if test="overTime != null">
+        OVER_TIME = #{overTime,jdbcType=DATE},
+      </if>
+      <if test="startTime != null">
+        START_TIME = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="subType != null">
+        SUB_TYPE = #{subType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinnet.baseservice.entity.VirtualHostSubProduct">
+    update SERVICE_VIRTUALHOSTSUBPRODUCT
+    set SUB_SERVICE_CODE = #{subServiceCode,jdbcType=VARCHAR},
+      SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+      DOMAIN_NAME = #{domainName,jdbcType=VARCHAR},
+      PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      BUY_TIME = #{buyTime,jdbcType=DATE},
+      OVER_TIME = #{overTime,jdbcType=DATE},
+      START_TIME = #{startTime,jdbcType=DATE},
+      SUB_TYPE = #{subType,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

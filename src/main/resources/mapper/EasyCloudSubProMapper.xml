@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinnet.baseservice.mapper.EasyCloudSubProMapper">
+  <resultMap id="BaseResultMap" type="com.xinnet.baseservice.entity.EasyCloudSubPro">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="SUB_SERVICE_CODE" jdbcType="VARCHAR" property="subServiceCode" />
+    <result column="SERVICE_CODE" jdbcType="VARCHAR" property="serviceCode" />
+    <result column="GOODS_CODE" jdbcType="VARCHAR" property="goodsCode" />
+    <result column="PRODUCT_CODE" jdbcType="VARCHAR" property="productCode" />
+    <result column="BUY_TIME" jdbcType="DATE" property="buyTime" />
+    <result column="END_TIME" jdbcType="DATE" property="endTime" />
+    <result column="SUB_TYPE" jdbcType="VARCHAR" property="subType" />
+    <result column="MODIFY_TIME" jdbcType="DATE" property="modifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SUB_SERVICE_CODE, SERVICE_CODE, GOODS_CODE, PRODUCT_CODE, BUY_TIME, END_TIME, 
+    SUB_TYPE, MODIFY_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SERVICE_EASYCLOUDSUBPRO
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from SERVICE_EASYCLOUDSUBPRO
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xinnet.baseservice.entity.EasyCloudSubPro">
+    insert into SERVICE_EASYCLOUDSUBPRO (ID, SUB_SERVICE_CODE, SERVICE_CODE, 
+      GOODS_CODE, PRODUCT_CODE, BUY_TIME, 
+      END_TIME, SUB_TYPE, MODIFY_TIME
+      )
+    values (#{id,jdbcType=DECIMAL}, #{subServiceCode,jdbcType=VARCHAR}, #{serviceCode,jdbcType=VARCHAR}, 
+      #{goodsCode,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, #{buyTime,jdbcType=DATE}, 
+      #{endTime,jdbcType=DATE}, #{subType,jdbcType=VARCHAR}, #{modifyTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinnet.baseservice.entity.EasyCloudSubPro">
+    insert into SERVICE_EASYCLOUDSUBPRO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="subServiceCode != null">
+        SUB_SERVICE_CODE,
+      </if>
+      <if test="serviceCode != null">
+        SERVICE_CODE,
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE,
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE,
+      </if>
+      <if test="buyTime != null">
+        BUY_TIME,
+      </if>
+      <if test="endTime != null">
+        END_TIME,
+      </if>
+      <if test="subType != null">
+        SUB_TYPE,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="subServiceCode != null">
+        #{subServiceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCode != null">
+        #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buyTime != null">
+        #{buyTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="subType != null">
+        #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinnet.baseservice.entity.EasyCloudSubPro">
+    update SERVICE_EASYCLOUDSUBPRO
+    <set>
+      <if test="subServiceCode != null">
+        SUB_SERVICE_CODE = #{subServiceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCode != null">
+        SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buyTime != null">
+        BUY_TIME = #{buyTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        END_TIME = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="subType != null">
+        SUB_TYPE = #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=DATE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinnet.baseservice.entity.EasyCloudSubPro">
+    update SERVICE_EASYCLOUDSUBPRO
+    set SUB_SERVICE_CODE = #{subServiceCode,jdbcType=VARCHAR},
+      SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+      GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      BUY_TIME = #{buyTime,jdbcType=DATE},
+      END_TIME = #{endTime,jdbcType=DATE},
+      SUB_TYPE = #{subType,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=DATE}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

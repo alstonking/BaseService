@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinnet.baseservice.mapper.ProductServiceTypeMapper">
+  <resultMap id="BaseResultMap" type="com.xinnet.baseservice.entity.ProductServiceType">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="PRODUCT_CODE" jdbcType="VARCHAR" property="productCode" />
+    <result column="DATA_CENTER" jdbcType="VARCHAR" property="dataCenter" />
+    <result column="SERVICE_TYPE" jdbcType="VARCHAR" property="serviceType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PRODUCT_CODE, DATA_CENTER, SERVICE_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PRODUCT_SERVICETYPE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from PRODUCT_SERVICETYPE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xinnet.baseservice.entity.ProductServiceType">
+    insert into PRODUCT_SERVICETYPE (ID, PRODUCT_CODE, DATA_CENTER, 
+      SERVICE_TYPE)
+    values (#{id,jdbcType=DECIMAL}, #{productCode,jdbcType=VARCHAR}, #{dataCenter,jdbcType=VARCHAR}, 
+      #{serviceType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinnet.baseservice.entity.ProductServiceType">
+    insert into PRODUCT_SERVICETYPE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE,
+      </if>
+      <if test="dataCenter != null">
+        DATA_CENTER,
+      </if>
+      <if test="serviceType != null">
+        SERVICE_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dataCenter != null">
+        #{dataCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null">
+        #{serviceType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinnet.baseservice.entity.ProductServiceType">
+    update PRODUCT_SERVICETYPE
+    <set>
+      <if test="productCode != null">
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dataCenter != null">
+        DATA_CENTER = #{dataCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null">
+        SERVICE_TYPE = #{serviceType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinnet.baseservice.entity.ProductServiceType">
+    update PRODUCT_SERVICETYPE
+    set PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      DATA_CENTER = #{dataCenter,jdbcType=VARCHAR},
+      SERVICE_TYPE = #{serviceType,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

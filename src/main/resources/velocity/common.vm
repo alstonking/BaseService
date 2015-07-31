@@ -1,0 +1,4 @@
+#set($ctx=$request.contextPath)
+<script type="text/javascript">
+	var ctx = "${ctx}";
+</script>

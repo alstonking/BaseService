@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinnet.baseservice.mapper.EasyCloudPreMapper">
+  <resultMap id="BaseResultMap" type="com.xinnet.baseservice.entity.EasyCloudPre">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="SERVICE_CODE" jdbcType="VARCHAR" property="serviceCode" />
+    <result column="GOODS_CODE" jdbcType="VARCHAR" property="goodsCode" />
+    <result column="PRODUCT_CODE" jdbcType="VARCHAR" property="productCode" />
+    <result column="GOODS_TYPE" jdbcType="VARCHAR" property="goodsType" />
+    <result column="SERVICE_STATE" jdbcType="VARCHAR" property="serviceState" />
+    <result column="TIME_AMOUNT" jdbcType="DECIMAL" property="timeAmount" />
+    <result column="TIME_UNIT" jdbcType="VARCHAR" property="timeUnit" />
+    <result column="SERVICE_ACTIVE_LIMIT" jdbcType="DATE" property="serviceActiveLimit" />
+    <result column="SERVICE_BUY_TIME" jdbcType="DATE" property="serviceBuyTime" />
+    <result column="AGENT_CODE" jdbcType="VARCHAR" property="agentCode" />
+    <result column="MODIFY_TIME" jdbcType="DATE" property="modifyTime" />
+    <result column="DB_SPACE_SIZE" jdbcType="DECIMAL" property="dbSpaceSize" />
+    <result column="SERVICE_TYPE" jdbcType="VARCHAR" property="serviceType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SERVICE_CODE, GOODS_CODE, PRODUCT_CODE, GOODS_TYPE, SERVICE_STATE, TIME_AMOUNT, 
+    TIME_UNIT, SERVICE_ACTIVE_LIMIT, SERVICE_BUY_TIME, AGENT_CODE, MODIFY_TIME, DB_SPACE_SIZE, 
+    SERVICE_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SERVICE_EASYCLOUDHOSTPRE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from SERVICE_EASYCLOUDHOSTPRE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xinnet.baseservice.entity.EasyCloudPre">
+    insert into SERVICE_EASYCLOUDHOSTPRE (ID, SERVICE_CODE, GOODS_CODE, 
+      PRODUCT_CODE, GOODS_TYPE, SERVICE_STATE, 
+      TIME_AMOUNT, TIME_UNIT, SERVICE_ACTIVE_LIMIT, 
+      SERVICE_BUY_TIME, AGENT_CODE, MODIFY_TIME, 
+      DB_SPACE_SIZE, SERVICE_TYPE)
+    values (#{id,jdbcType=DECIMAL}, #{serviceCode,jdbcType=VARCHAR}, #{goodsCode,jdbcType=VARCHAR}, 
+      #{productCode,jdbcType=VARCHAR}, #{goodsType,jdbcType=VARCHAR}, #{serviceState,jdbcType=VARCHAR}, 
+      #{timeAmount,jdbcType=DECIMAL}, #{timeUnit,jdbcType=VARCHAR}, #{serviceActiveLimit,jdbcType=DATE}, 
+      #{serviceBuyTime,jdbcType=DATE}, #{agentCode,jdbcType=VARCHAR}, #{modifyTime,jdbcType=DATE}, 
+      #{dbSpaceSize,jdbcType=DECIMAL}, #{serviceType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinnet.baseservice.entity.EasyCloudPre">
+    insert into SERVICE_EASYCLOUDHOSTPRE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="serviceCode != null">
+        SERVICE_CODE,
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE,
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE,
+      </if>
+      <if test="goodsType != null">
+        GOODS_TYPE,
+      </if>
+      <if test="serviceState != null">
+        SERVICE_STATE,
+      </if>
+      <if test="timeAmount != null">
+        TIME_AMOUNT,
+      </if>
+      <if test="timeUnit != null">
+        TIME_UNIT,
+      </if>
+      <if test="serviceActiveLimit != null">
+        SERVICE_ACTIVE_LIMIT,
+      </if>
+      <if test="serviceBuyTime != null">
+        SERVICE_BUY_TIME,
+      </if>
+      <if test="agentCode != null">
+        AGENT_CODE,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="dbSpaceSize != null">
+        DB_SPACE_SIZE,
+      </if>
+      <if test="serviceType != null">
+        SERVICE_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceCode != null">
+        #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceState != null">
+        #{serviceState,jdbcType=VARCHAR},
+      </if>
+      <if test="timeAmount != null">
+        #{timeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="timeUnit != null">
+        #{timeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceActiveLimit != null">
+        #{serviceActiveLimit,jdbcType=DATE},
+      </if>
+      <if test="serviceBuyTime != null">
+        #{serviceBuyTime,jdbcType=DATE},
+      </if>
+      <if test="agentCode != null">
+        #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=DATE},
+      </if>
+      <if test="dbSpaceSize != null">
+        #{dbSpaceSize,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceType != null">
+        #{serviceType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinnet.baseservice.entity.EasyCloudPre">
+    update SERVICE_EASYCLOUDHOSTPRE
+    <set>
+      <if test="serviceCode != null">
+        SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceState != null">
+        SERVICE_STATE = #{serviceState,jdbcType=VARCHAR},
+      </if>
+      <if test="timeAmount != null">
+        TIME_AMOUNT = #{timeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="timeUnit != null">
+        TIME_UNIT = #{timeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceActiveLimit != null">
+        SERVICE_ACTIVE_LIMIT = #{serviceActiveLimit,jdbcType=DATE},
+      </if>
+      <if test="serviceBuyTime != null">
+        SERVICE_BUY_TIME = #{serviceBuyTime,jdbcType=DATE},
+      </if>
+      <if test="agentCode != null">
+        AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=DATE},
+      </if>
+      <if test="dbSpaceSize != null">
+        DB_SPACE_SIZE = #{dbSpaceSize,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceType != null">
+        SERVICE_TYPE = #{serviceType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinnet.baseservice.entity.EasyCloudPre">
+    update SERVICE_EASYCLOUDHOSTPRE
+    set SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+      GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},
+      SERVICE_STATE = #{serviceState,jdbcType=VARCHAR},
+      TIME_AMOUNT = #{timeAmount,jdbcType=DECIMAL},
+      TIME_UNIT = #{timeUnit,jdbcType=VARCHAR},
+      SERVICE_ACTIVE_LIMIT = #{serviceActiveLimit,jdbcType=DATE},
+      SERVICE_BUY_TIME = #{serviceBuyTime,jdbcType=DATE},
+      AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=DATE},
+      DB_SPACE_SIZE = #{dbSpaceSize,jdbcType=DECIMAL},
+      SERVICE_TYPE = #{serviceType,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

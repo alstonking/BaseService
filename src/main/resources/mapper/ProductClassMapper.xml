@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinnet.baseservice.mapper.ProductClassMapper">
+  <resultMap id="BaseResultMap" type="com.xinnet.baseservice.entity.ProductClass">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="PRODUCT_CLASS_CODE" jdbcType="VARCHAR" property="productClassCode" />
+    <result column="PRODUCT_CLASS_NAME" jdbcType="VARCHAR" property="productClassName" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="SUPER_PRODUCT_CLASS_CODE" jdbcType="VARCHAR" property="superProductClassCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PRODUCT_CLASS_CODE, PRODUCT_CLASS_NAME, DESCRIPTION, SUPER_PRODUCT_CLASS_CODE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PRODUCT_PRODUCTCLASS
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from PRODUCT_PRODUCTCLASS
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xinnet.baseservice.entity.ProductClass">
+    insert into PRODUCT_PRODUCTCLASS (ID, PRODUCT_CLASS_CODE, PRODUCT_CLASS_NAME, 
+      DESCRIPTION, SUPER_PRODUCT_CLASS_CODE)
+    values (#{id,jdbcType=DECIMAL}, #{productClassCode,jdbcType=VARCHAR}, #{productClassName,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{superProductClassCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinnet.baseservice.entity.ProductClass">
+    insert into PRODUCT_PRODUCTCLASS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="productClassCode != null">
+        PRODUCT_CLASS_CODE,
+      </if>
+      <if test="productClassName != null">
+        PRODUCT_CLASS_NAME,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="superProductClassCode != null">
+        SUPER_PRODUCT_CLASS_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="productClassCode != null">
+        #{productClassCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productClassName != null">
+        #{productClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="superProductClassCode != null">
+        #{superProductClassCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinnet.baseservice.entity.ProductClass">
+    update PRODUCT_PRODUCTCLASS
+    <set>
+      <if test="productClassCode != null">
+        PRODUCT_CLASS_CODE = #{productClassCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productClassName != null">
+        PRODUCT_CLASS_NAME = #{productClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="superProductClassCode != null">
+        SUPER_PRODUCT_CLASS_CODE = #{superProductClassCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinnet.baseservice.entity.ProductClass">
+    update PRODUCT_PRODUCTCLASS
+    set PRODUCT_CLASS_CODE = #{productClassCode,jdbcType=VARCHAR},
+      PRODUCT_CLASS_NAME = #{productClassName,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      SUPER_PRODUCT_CLASS_CODE = #{superProductClassCode,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

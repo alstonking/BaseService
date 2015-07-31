@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinnet.baseservice.mapper.AgentMapper">
+  <resultMap id="BaseResultMap" type="com.xinnet.baseservice.entity.Agent">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="AGENT_CODE" jdbcType="VARCHAR" property="agentCode" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="AGENT_LEVEL_CODE" jdbcType="VARCHAR" property="agentLevelCode" />
+    <result column="APPLY_DATE" jdbcType="DATE" property="applyDate" />
+    <result column="START_DATE" jdbcType="DATE" property="startDate" />
+    <result column="ADM_USER_CODE" jdbcType="VARCHAR" property="admUserCode" />
+    <result column="CEO_USER_CODE" jdbcType="VARCHAR" property="ceoUserCode" />
+    <result column="FEE_USER_CODE" jdbcType="VARCHAR" property="feeUserCode" />
+    <result column="NS_HANDLE" jdbcType="VARCHAR" property="nsHandle" />
+    <result column="NS2_HANDLE" jdbcType="VARCHAR" property="ns2Handle" />
+    <result column="ORGAN_CODE" jdbcType="VARCHAR" property="organCode" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="REFUSE_REASON" jdbcType="VARCHAR" property="refuseReason" />
+    <result column="ORGANIZE_NAME_CN" jdbcType="VARCHAR" property="organizeNameCn" />
+    <result column="NS3_HANDLE" jdbcType="VARCHAR" property="ns3Handle" />
+    <result column="NS4_HANDLE" jdbcType="VARCHAR" property="ns4Handle" />
+    <result column="FIRST_START_DATE" jdbcType="DATE" property="firstStartDate" />
+    <result column="INVOICE_USER_CODE" jdbcType="VARCHAR" property="invoiceUserCode" />
+    <result column="IUC_UPDATE_DATE" jdbcType="DATE" property="iucUpdateDate" />
+    <result column="IS_TOKEN_LOGIN" jdbcType="VARCHAR" property="isTokenLogin" />
+    <result column="VERIFICATION" jdbcType="VARCHAR" property="verification" />
+    <result column="ISVERIFICATION" jdbcType="VARCHAR" property="isverification" />
+    <result column="TELENUMBER" jdbcType="VARCHAR" property="telenumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, AGENT_CODE, USER_NAME, PASSWORD, AGENT_LEVEL_CODE, APPLY_DATE, START_DATE, ADM_USER_CODE, 
+    CEO_USER_CODE, FEE_USER_CODE, NS_HANDLE, NS2_HANDLE, ORGAN_CODE, STATE, REFUSE_REASON, 
+    ORGANIZE_NAME_CN, NS3_HANDLE, NS4_HANDLE, FIRST_START_DATE, INVOICE_USER_CODE, IUC_UPDATE_DATE, 
+    IS_TOKEN_LOGIN, VERIFICATION, ISVERIFICATION, TELENUMBER
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AGENT_AGENT
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from AGENT_AGENT
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xinnet.baseservice.entity.Agent">
+    insert into AGENT_AGENT (ID, AGENT_CODE, USER_NAME, 
+      PASSWORD, AGENT_LEVEL_CODE, APPLY_DATE, 
+      START_DATE, ADM_USER_CODE, CEO_USER_CODE, 
+      FEE_USER_CODE, NS_HANDLE, NS2_HANDLE, 
+      ORGAN_CODE, STATE, REFUSE_REASON, 
+      ORGANIZE_NAME_CN, NS3_HANDLE, NS4_HANDLE, 
+      FIRST_START_DATE, INVOICE_USER_CODE, IUC_UPDATE_DATE, 
+      IS_TOKEN_LOGIN, VERIFICATION, ISVERIFICATION, 
+      TELENUMBER)
+    values (#{id,jdbcType=DECIMAL}, #{agentCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{agentLevelCode,jdbcType=VARCHAR}, #{applyDate,jdbcType=DATE}, 
+      #{startDate,jdbcType=DATE}, #{admUserCode,jdbcType=VARCHAR}, #{ceoUserCode,jdbcType=VARCHAR}, 
+      #{feeUserCode,jdbcType=VARCHAR}, #{nsHandle,jdbcType=VARCHAR}, #{ns2Handle,jdbcType=VARCHAR}, 
+      #{organCode,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{refuseReason,jdbcType=VARCHAR}, 
+      #{organizeNameCn,jdbcType=VARCHAR}, #{ns3Handle,jdbcType=VARCHAR}, #{ns4Handle,jdbcType=VARCHAR}, 
+      #{firstStartDate,jdbcType=DATE}, #{invoiceUserCode,jdbcType=VARCHAR}, #{iucUpdateDate,jdbcType=DATE}, 
+      #{isTokenLogin,jdbcType=VARCHAR}, #{verification,jdbcType=VARCHAR}, #{isverification,jdbcType=VARCHAR}, 
+      #{telenumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinnet.baseservice.entity.Agent">
+    insert into AGENT_AGENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="agentCode != null">
+        AGENT_CODE,
+      </if>
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="agentLevelCode != null">
+        AGENT_LEVEL_CODE,
+      </if>
+      <if test="applyDate != null">
+        APPLY_DATE,
+      </if>
+      <if test="startDate != null">
+        START_DATE,
+      </if>
+      <if test="admUserCode != null">
+        ADM_USER_CODE,
+      </if>
+      <if test="ceoUserCode != null">
+        CEO_USER_CODE,
+      </if>
+      <if test="feeUserCode != null">
+        FEE_USER_CODE,
+      </if>
+      <if test="nsHandle != null">
+        NS_HANDLE,
+      </if>
+      <if test="ns2Handle != null">
+        NS2_HANDLE,
+      </if>
+      <if test="organCode != null">
+        ORGAN_CODE,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="refuseReason != null">
+        REFUSE_REASON,
+      </if>
+      <if test="organizeNameCn != null">
+        ORGANIZE_NAME_CN,
+      </if>
+      <if test="ns3Handle != null">
+        NS3_HANDLE,
+      </if>
+      <if test="ns4Handle != null">
+        NS4_HANDLE,
+      </if>
+      <if test="firstStartDate != null">
+        FIRST_START_DATE,
+      </if>
+      <if test="invoiceUserCode != null">
+        INVOICE_USER_CODE,
+      </if>
+      <if test="iucUpdateDate != null">
+        IUC_UPDATE_DATE,
+      </if>
+      <if test="isTokenLogin != null">
+        IS_TOKEN_LOGIN,
+      </if>
+      <if test="verification != null">
+        VERIFICATION,
+      </if>
+      <if test="isverification != null">
+        ISVERIFICATION,
+      </if>
+      <if test="telenumber != null">
+        TELENUMBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="agentCode != null">
+        #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="agentLevelCode != null">
+        #{agentLevelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null">
+        #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="admUserCode != null">
+        #{admUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ceoUserCode != null">
+        #{ceoUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="feeUserCode != null">
+        #{feeUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nsHandle != null">
+        #{nsHandle,jdbcType=VARCHAR},
+      </if>
+      <if test="ns2Handle != null">
+        #{ns2Handle,jdbcType=VARCHAR},
+      </if>
+      <if test="organCode != null">
+        #{organCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="refuseReason != null">
+        #{refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="organizeNameCn != null">
+        #{organizeNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="ns3Handle != null">
+        #{ns3Handle,jdbcType=VARCHAR},
+      </if>
+      <if test="ns4Handle != null">
+        #{ns4Handle,jdbcType=VARCHAR},
+      </if>
+      <if test="firstStartDate != null">
+        #{firstStartDate,jdbcType=DATE},
+      </if>
+      <if test="invoiceUserCode != null">
+        #{invoiceUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="iucUpdateDate != null">
+        #{iucUpdateDate,jdbcType=DATE},
+      </if>
+      <if test="isTokenLogin != null">
+        #{isTokenLogin,jdbcType=VARCHAR},
+      </if>
+      <if test="verification != null">
+        #{verification,jdbcType=VARCHAR},
+      </if>
+      <if test="isverification != null">
+        #{isverification,jdbcType=VARCHAR},
+      </if>
+      <if test="telenumber != null">
+        #{telenumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinnet.baseservice.entity.Agent">
+    update AGENT_AGENT
+    <set>
+      <if test="agentCode != null">
+        AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="agentLevelCode != null">
+        AGENT_LEVEL_CODE = #{agentLevelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null">
+        APPLY_DATE = #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="startDate != null">
+        START_DATE = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="admUserCode != null">
+        ADM_USER_CODE = #{admUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ceoUserCode != null">
+        CEO_USER_CODE = #{ceoUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="feeUserCode != null">
+        FEE_USER_CODE = #{feeUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nsHandle != null">
+        NS_HANDLE = #{nsHandle,jdbcType=VARCHAR},
+      </if>
+      <if test="ns2Handle != null">
+        NS2_HANDLE = #{ns2Handle,jdbcType=VARCHAR},
+      </if>
+      <if test="organCode != null">
+        ORGAN_CODE = #{organCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="refuseReason != null">
+        REFUSE_REASON = #{refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="organizeNameCn != null">
+        ORGANIZE_NAME_CN = #{organizeNameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="ns3Handle != null">
+        NS3_HANDLE = #{ns3Handle,jdbcType=VARCHAR},
+      </if>
+      <if test="ns4Handle != null">
+        NS4_HANDLE = #{ns4Handle,jdbcType=VARCHAR},
+      </if>
+      <if test="firstStartDate != null">
+        FIRST_START_DATE = #{firstStartDate,jdbcType=DATE},
+      </if>
+      <if test="invoiceUserCode != null">
+        INVOICE_USER_CODE = #{invoiceUserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="iucUpdateDate != null">
+        IUC_UPDATE_DATE = #{iucUpdateDate,jdbcType=DATE},
+      </if>
+      <if test="isTokenLogin != null">
+        IS_TOKEN_LOGIN = #{isTokenLogin,jdbcType=VARCHAR},
+      </if>
+      <if test="verification != null">
+        VERIFICATION = #{verification,jdbcType=VARCHAR},
+      </if>
+      <if test="isverification != null">
+        ISVERIFICATION = #{isverification,jdbcType=VARCHAR},
+      </if>
+      <if test="telenumber != null">
+        TELENUMBER = #{telenumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinnet.baseservice.entity.Agent">
+    update AGENT_AGENT
+    set AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      AGENT_LEVEL_CODE = #{agentLevelCode,jdbcType=VARCHAR},
+      APPLY_DATE = #{applyDate,jdbcType=DATE},
+      START_DATE = #{startDate,jdbcType=DATE},
+      ADM_USER_CODE = #{admUserCode,jdbcType=VARCHAR},
+      CEO_USER_CODE = #{ceoUserCode,jdbcType=VARCHAR},
+      FEE_USER_CODE = #{feeUserCode,jdbcType=VARCHAR},
+      NS_HANDLE = #{nsHandle,jdbcType=VARCHAR},
+      NS2_HANDLE = #{ns2Handle,jdbcType=VARCHAR},
+      ORGAN_CODE = #{organCode,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      REFUSE_REASON = #{refuseReason,jdbcType=VARCHAR},
+      ORGANIZE_NAME_CN = #{organizeNameCn,jdbcType=VARCHAR},
+      NS3_HANDLE = #{ns3Handle,jdbcType=VARCHAR},
+      NS4_HANDLE = #{ns4Handle,jdbcType=VARCHAR},
+      FIRST_START_DATE = #{firstStartDate,jdbcType=DATE},
+      INVOICE_USER_CODE = #{invoiceUserCode,jdbcType=VARCHAR},
+      IUC_UPDATE_DATE = #{iucUpdateDate,jdbcType=DATE},
+      IS_TOKEN_LOGIN = #{isTokenLogin,jdbcType=VARCHAR},
+      VERIFICATION = #{verification,jdbcType=VARCHAR},
+      ISVERIFICATION = #{isverification,jdbcType=VARCHAR},
+      TELENUMBER = #{telenumber,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

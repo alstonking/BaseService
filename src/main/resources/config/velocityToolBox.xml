@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toolbox>
+        <!-- application start -->
+        <tool>
+			<key>date</key> 
+			<scope>application</scope> 
+			<class>org.apache.velocity.tools.generic.DateTool</class> 
+			<parameter name="format" value="yyyy-MM-dd HH:mm:ss"/>
+        </tool>
+        <tool>
+        	<!-- 自定义工具类 -->
+            <key>velocityUtil</key>
+            <scope>application</scope>
+            <class>com.xinnet.core.utils.velocity.VelocityUtil</class>
+        </tool>
+        <tool>
+        	<!-- 自定义工具类 -->
+            <key>shiro</key>
+            <scope>application</scope>
+            <class>com.xinnet.manage.system.utils.Permission</class>
+        </tool>
+        <!-- application end -->
+</toolbox>

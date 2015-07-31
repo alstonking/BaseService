@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinnet.baseservice.mapper.VirtualHostPreMapper">
+  <resultMap id="BaseResultMap" type="com.xinnet.baseservice.entity.VirtualHostPre">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="SERVICE_CODE" jdbcType="VARCHAR" property="serviceCode" />
+    <result column="GOODS_CODE" jdbcType="VARCHAR" property="goodsCode" />
+    <result column="PRODUCT_CODE" jdbcType="VARCHAR" property="productCode" />
+    <result column="GOODS_TYPE" jdbcType="VARCHAR" property="goodsType" />
+    <result column="FIRST_SERVICE_CODE" jdbcType="VARCHAR" property="firstServiceCode" />
+    <result column="RENEW_TYPE" jdbcType="CHAR" property="renewType" />
+    <result column="UPGRADE_TYPE" jdbcType="CHAR" property="upgradeType" />
+    <result column="RETURNS_TYPE" jdbcType="CHAR" property="returnsType" />
+    <result column="TASTE_TYPE" jdbcType="CHAR" property="tasteType" />
+    <result column="SERVICE_STATE" jdbcType="VARCHAR" property="serviceState" />
+    <result column="TIME_AMOUNT" jdbcType="DECIMAL" property="timeAmount" />
+    <result column="TIME_UNIT" jdbcType="VARCHAR" property="timeUnit" />
+    <result column="SERICE_ACTIVE_LIMIT" jdbcType="DATE" property="sericeActiveLimit" />
+    <result column="SERICE_BUY_TIME" jdbcType="DATE" property="sericeBuyTime" />
+    <result column="SERVICE_FROM" jdbcType="VARCHAR" property="serviceFrom" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="HOME_DIR" jdbcType="VARCHAR" property="homeDir" />
+    <result column="SITE_TYPE" jdbcType="CHAR" property="siteType" />
+    <result column="QUOTA_SIZE" jdbcType="DECIMAL" property="quotaSize" />
+    <result column="OPEN_MARK" jdbcType="VARCHAR" property="openMark" />
+    <result column="LOGIN_COUNT" jdbcType="DECIMAL" property="loginCount" />
+    <result column="LOGIN_IP" jdbcType="VARCHAR" property="loginIp" />
+    <result column="AGENT_CODE" jdbcType="VARCHAR" property="agentCode" />
+    <result column="SERVICE_START_DATE" jdbcType="DATE" property="serviceStartDate" />
+    <result column="SERVICE_END_DATE" jdbcType="DATE" property="serviceEndDate" />
+    <result column="MODIFY_TIME" jdbcType="DATE" property="modifyTime" />
+    <result column="SET_DNS" jdbcType="VARCHAR" property="setDns" />
+    <result column="SET_WEB" jdbcType="VARCHAR" property="setWeb" />
+    <result column="HOST_SERVER_GROUP" jdbcType="VARCHAR" property="hostServerGroup" />
+    <result column="DATABASE_GROUP" jdbcType="VARCHAR" property="databaseGroup" />
+    <result column="DB_TYPE" jdbcType="VARCHAR" property="dbType" />
+    <result column="DB_SPACE_SIZE" jdbcType="DECIMAL" property="dbSpaceSize" />
+    <result column="SERVICE_TYPE" jdbcType="VARCHAR" property="serviceType" />
+    <result column="VIRTUALHOST_ID" jdbcType="VARCHAR" property="virtualhostId" />
+    <result column="ICP_LOOP_STATE" jdbcType="VARCHAR" property="icpLoopState" />
+    <result column="DATACENTER_COUNT" jdbcType="DECIMAL" property="datacenterCount" />
+    <result column="IS_SELECT_INDEPENDENT_IP" jdbcType="CHAR" property="isSelectIndependentIp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SERVICE_CODE, GOODS_CODE, PRODUCT_CODE, GOODS_TYPE, FIRST_SERVICE_CODE, RENEW_TYPE, 
+    UPGRADE_TYPE, RETURNS_TYPE, TASTE_TYPE, SERVICE_STATE, TIME_AMOUNT, TIME_UNIT, SERICE_ACTIVE_LIMIT, 
+    SERICE_BUY_TIME, SERVICE_FROM, DOMAIN_NAME, USER_NAME, PASSWORD, HOME_DIR, SITE_TYPE, 
+    QUOTA_SIZE, OPEN_MARK, LOGIN_COUNT, LOGIN_IP, AGENT_CODE, SERVICE_START_DATE, SERVICE_END_DATE, 
+    MODIFY_TIME, SET_DNS, SET_WEB, HOST_SERVER_GROUP, DATABASE_GROUP, DB_TYPE, DB_SPACE_SIZE, 
+    SERVICE_TYPE, VIRTUALHOST_ID, ICP_LOOP_STATE, DATACENTER_COUNT, IS_SELECT_INDEPENDENT_IP
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SERVICE_VIRTUALHOSTPRE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from SERVICE_VIRTUALHOSTPRE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="addVirtualHostPreInfo" useGeneratedKeys="false" keyProperty="id" parameterType="com.xinnet.baseservice.entity.VirtualHostPre">
+    insert into SERVICE_VIRTUALHOSTPRE (ID, SERVICE_CODE, GOODS_CODE,
+      PRODUCT_CODE, GOODS_TYPE, FIRST_SERVICE_CODE, 
+      RENEW_TYPE, UPGRADE_TYPE, RETURNS_TYPE, 
+      TASTE_TYPE, SERVICE_STATE, TIME_AMOUNT, 
+      TIME_UNIT, SERICE_ACTIVE_LIMIT, SERICE_BUY_TIME, 
+      SERVICE_FROM, DOMAIN_NAME, USER_NAME, 
+      PASSWORD, HOME_DIR, SITE_TYPE, 
+      QUOTA_SIZE, OPEN_MARK, LOGIN_COUNT, 
+      LOGIN_IP, AGENT_CODE, SERVICE_START_DATE, 
+      SERVICE_END_DATE, MODIFY_TIME, SET_DNS, 
+      SET_WEB, HOST_SERVER_GROUP, DATABASE_GROUP, 
+      DB_TYPE, DB_SPACE_SIZE, SERVICE_TYPE, 
+      VIRTUALHOST_ID, ICP_LOOP_STATE, DATACENTER_COUNT, 
+      IS_SELECT_INDEPENDENT_IP)
+    values (SEQ_SERVICE_VIRTUALHOSTPRE.NEXTVAL, #{serviceCode,jdbcType=VARCHAR}, #{goodsCode,jdbcType=VARCHAR},
+      #{productCode,jdbcType=VARCHAR}, #{goodsType,jdbcType=VARCHAR}, #{firstServiceCode,jdbcType=VARCHAR}, 
+      #{renewType,jdbcType=CHAR}, #{upgradeType,jdbcType=CHAR}, #{returnsType,jdbcType=CHAR}, 
+      #{tasteType,jdbcType=CHAR}, #{serviceState,jdbcType=VARCHAR}, #{timeAmount,jdbcType=DECIMAL}, 
+      #{timeUnit,jdbcType=VARCHAR}, #{sericeActiveLimit,jdbcType=DATE}, #{sericeBuyTime,jdbcType=DATE}, 
+      #{serviceFrom,jdbcType=VARCHAR}, #{domainName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{homeDir,jdbcType=VARCHAR}, #{siteType,jdbcType=CHAR}, 
+      #{quotaSize,jdbcType=DECIMAL}, #{openMark,jdbcType=VARCHAR}, #{loginCount,jdbcType=DECIMAL}, 
+      #{loginIp,jdbcType=VARCHAR}, #{agentCode,jdbcType=VARCHAR}, #{serviceStartDate,jdbcType=DATE}, 
+      #{serviceEndDate,jdbcType=DATE}, #{modifyTime,jdbcType=DATE}, #{setDns,jdbcType=VARCHAR}, 
+      #{setWeb,jdbcType=VARCHAR}, #{hostServerGroup,jdbcType=VARCHAR}, #{databaseGroup,jdbcType=VARCHAR}, 
+      #{dbType,jdbcType=VARCHAR}, #{dbSpaceSize,jdbcType=DECIMAL}, #{serviceType,jdbcType=VARCHAR}, 
+      #{virtualhostId,jdbcType=VARCHAR}, #{icpLoopState,jdbcType=VARCHAR}, #{datacenterCount,jdbcType=DECIMAL}, 
+      #{isSelectIndependentIp,jdbcType=CHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.xinnet.baseservice.entity.VirtualHostPre">
+    insert into SERVICE_VIRTUALHOSTPRE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="serviceCode != null">
+        SERVICE_CODE,
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE,
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE,
+      </if>
+      <if test="goodsType != null">
+        GOODS_TYPE,
+      </if>
+      <if test="firstServiceCode != null">
+        FIRST_SERVICE_CODE,
+      </if>
+      <if test="renewType != null">
+        RENEW_TYPE,
+      </if>
+      <if test="upgradeType != null">
+        UPGRADE_TYPE,
+      </if>
+      <if test="returnsType != null">
+        RETURNS_TYPE,
+      </if>
+      <if test="tasteType != null">
+        TASTE_TYPE,
+      </if>
+      <if test="serviceState != null">
+        SERVICE_STATE,
+      </if>
+      <if test="timeAmount != null">
+        TIME_AMOUNT,
+      </if>
+      <if test="timeUnit != null">
+        TIME_UNIT,
+      </if>
+      <if test="sericeActiveLimit != null">
+        SERICE_ACTIVE_LIMIT,
+      </if>
+      <if test="sericeBuyTime != null">
+        SERICE_BUY_TIME,
+      </if>
+      <if test="serviceFrom != null">
+        SERVICE_FROM,
+      </if>
+      <if test="domainName != null">
+        DOMAIN_NAME,
+      </if>
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="homeDir != null">
+        HOME_DIR,
+      </if>
+      <if test="siteType != null">
+        SITE_TYPE,
+      </if>
+      <if test="quotaSize != null">
+        QUOTA_SIZE,
+      </if>
+      <if test="openMark != null">
+        OPEN_MARK,
+      </if>
+      <if test="loginCount != null">
+        LOGIN_COUNT,
+      </if>
+      <if test="loginIp != null">
+        LOGIN_IP,
+      </if>
+      <if test="agentCode != null">
+        AGENT_CODE,
+      </if>
+      <if test="serviceStartDate != null">
+        SERVICE_START_DATE,
+      </if>
+      <if test="serviceEndDate != null">
+        SERVICE_END_DATE,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="setDns != null">
+        SET_DNS,
+      </if>
+      <if test="setWeb != null">
+        SET_WEB,
+      </if>
+      <if test="hostServerGroup != null">
+        HOST_SERVER_GROUP,
+      </if>
+      <if test="databaseGroup != null">
+        DATABASE_GROUP,
+      </if>
+      <if test="dbType != null">
+        DB_TYPE,
+      </if>
+      <if test="dbSpaceSize != null">
+        DB_SPACE_SIZE,
+      </if>
+      <if test="serviceType != null">
+        SERVICE_TYPE,
+      </if>
+      <if test="virtualhostId != null">
+        VIRTUALHOST_ID,
+      </if>
+      <if test="icpLoopState != null">
+        ICP_LOOP_STATE,
+      </if>
+      <if test="datacenterCount != null">
+        DATACENTER_COUNT,
+      </if>
+      <if test="isSelectIndependentIp != null">
+        IS_SELECT_INDEPENDENT_IP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceCode != null">
+        #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="firstServiceCode != null">
+        #{firstServiceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="renewType != null">
+        #{renewType,jdbcType=CHAR},
+      </if>
+      <if test="upgradeType != null">
+        #{upgradeType,jdbcType=CHAR},
+      </if>
+      <if test="returnsType != null">
+        #{returnsType,jdbcType=CHAR},
+      </if>
+      <if test="tasteType != null">
+        #{tasteType,jdbcType=CHAR},
+      </if>
+      <if test="serviceState != null">
+        #{serviceState,jdbcType=VARCHAR},
+      </if>
+      <if test="timeAmount != null">
+        #{timeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="timeUnit != null">
+        #{timeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="sericeActiveLimit != null">
+        #{sericeActiveLimit,jdbcType=DATE},
+      </if>
+      <if test="sericeBuyTime != null">
+        #{sericeBuyTime,jdbcType=DATE},
+      </if>
+      <if test="serviceFrom != null">
+        #{serviceFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="domainName != null">
+        #{domainName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="homeDir != null">
+        #{homeDir,jdbcType=VARCHAR},
+      </if>
+      <if test="siteType != null">
+        #{siteType,jdbcType=CHAR},
+      </if>
+      <if test="quotaSize != null">
+        #{quotaSize,jdbcType=DECIMAL},
+      </if>
+      <if test="openMark != null">
+        #{openMark,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCount != null">
+        #{loginCount,jdbcType=DECIMAL},
+      </if>
+      <if test="loginIp != null">
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="agentCode != null">
+        #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStartDate != null">
+        #{serviceStartDate,jdbcType=DATE},
+      </if>
+      <if test="serviceEndDate != null">
+        #{serviceEndDate,jdbcType=DATE},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=DATE},
+      </if>
+      <if test="setDns != null">
+        #{setDns,jdbcType=VARCHAR},
+      </if>
+      <if test="setWeb != null">
+        #{setWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="hostServerGroup != null">
+        #{hostServerGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseGroup != null">
+        #{databaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="dbType != null">
+        #{dbType,jdbcType=VARCHAR},
+      </if>
+      <if test="dbSpaceSize != null">
+        #{dbSpaceSize,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceType != null">
+        #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="virtualhostId != null">
+        #{virtualhostId,jdbcType=VARCHAR},
+      </if>
+      <if test="icpLoopState != null">
+        #{icpLoopState,jdbcType=VARCHAR},
+      </if>
+      <if test="datacenterCount != null">
+        #{datacenterCount,jdbcType=DECIMAL},
+      </if>
+      <if test="isSelectIndependentIp != null">
+        #{isSelectIndependentIp,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinnet.baseservice.entity.VirtualHostPre">
+    update SERVICE_VIRTUALHOSTPRE
+    <set>
+      <if test="serviceCode != null">
+        SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="firstServiceCode != null">
+        FIRST_SERVICE_CODE = #{firstServiceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="renewType != null">
+        RENEW_TYPE = #{renewType,jdbcType=CHAR},
+      </if>
+      <if test="upgradeType != null">
+        UPGRADE_TYPE = #{upgradeType,jdbcType=CHAR},
+      </if>
+      <if test="returnsType != null">
+        RETURNS_TYPE = #{returnsType,jdbcType=CHAR},
+      </if>
+      <if test="tasteType != null">
+        TASTE_TYPE = #{tasteType,jdbcType=CHAR},
+      </if>
+      <if test="serviceState != null">
+        SERVICE_STATE = #{serviceState,jdbcType=VARCHAR},
+      </if>
+      <if test="timeAmount != null">
+        TIME_AMOUNT = #{timeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="timeUnit != null">
+        TIME_UNIT = #{timeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="sericeActiveLimit != null">
+        SERICE_ACTIVE_LIMIT = #{sericeActiveLimit,jdbcType=DATE},
+      </if>
+      <if test="sericeBuyTime != null">
+        SERICE_BUY_TIME = #{sericeBuyTime,jdbcType=DATE},
+      </if>
+      <if test="serviceFrom != null">
+        SERVICE_FROM = #{serviceFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="domainName != null">
+        DOMAIN_NAME = #{domainName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="homeDir != null">
+        HOME_DIR = #{homeDir,jdbcType=VARCHAR},
+      </if>
+      <if test="siteType != null">
+        SITE_TYPE = #{siteType,jdbcType=CHAR},
+      </if>
+      <if test="quotaSize != null">
+        QUOTA_SIZE = #{quotaSize,jdbcType=DECIMAL},
+      </if>
+      <if test="openMark != null">
+        OPEN_MARK = #{openMark,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCount != null">
+        LOGIN_COUNT = #{loginCount,jdbcType=DECIMAL},
+      </if>
+      <if test="loginIp != null">
+        LOGIN_IP = #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="agentCode != null">
+        AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStartDate != null">
+        SERVICE_START_DATE = #{serviceStartDate,jdbcType=DATE},
+      </if>
+      <if test="serviceEndDate != null">
+        SERVICE_END_DATE = #{serviceEndDate,jdbcType=DATE},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=DATE},
+      </if>
+      <if test="setDns != null">
+        SET_DNS = #{setDns,jdbcType=VARCHAR},
+      </if>
+      <if test="setWeb != null">
+        SET_WEB = #{setWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="hostServerGroup != null">
+        HOST_SERVER_GROUP = #{hostServerGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseGroup != null">
+        DATABASE_GROUP = #{databaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="dbType != null">
+        DB_TYPE = #{dbType,jdbcType=VARCHAR},
+      </if>
+      <if test="dbSpaceSize != null">
+        DB_SPACE_SIZE = #{dbSpaceSize,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceType != null">
+        SERVICE_TYPE = #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="virtualhostId != null">
+        VIRTUALHOST_ID = #{virtualhostId,jdbcType=VARCHAR},
+      </if>
+      <if test="icpLoopState != null">
+        ICP_LOOP_STATE = #{icpLoopState,jdbcType=VARCHAR},
+      </if>
+      <if test="datacenterCount != null">
+        DATACENTER_COUNT = #{datacenterCount,jdbcType=DECIMAL},
+      </if>
+      <if test="isSelectIndependentIp != null">
+        IS_SELECT_INDEPENDENT_IP = #{isSelectIndependentIp,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinnet.baseservice.entity.VirtualHostPre">
+    update SERVICE_VIRTUALHOSTPRE
+    set SERVICE_CODE = #{serviceCode,jdbcType=VARCHAR},
+      GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},
+      FIRST_SERVICE_CODE = #{firstServiceCode,jdbcType=VARCHAR},
+      RENEW_TYPE = #{renewType,jdbcType=CHAR},
+      UPGRADE_TYPE = #{upgradeType,jdbcType=CHAR},
+      RETURNS_TYPE = #{returnsType,jdbcType=CHAR},
+      TASTE_TYPE = #{tasteType,jdbcType=CHAR},
+      SERVICE_STATE = #{serviceState,jdbcType=VARCHAR},
+      TIME_AMOUNT = #{timeAmount,jdbcType=DECIMAL},
+      TIME_UNIT = #{timeUnit,jdbcType=VARCHAR},
+      SERICE_ACTIVE_LIMIT = #{sericeActiveLimit,jdbcType=DATE},
+      SERICE_BUY_TIME = #{sericeBuyTime,jdbcType=DATE},
+      SERVICE_FROM = #{serviceFrom,jdbcType=VARCHAR},
+      DOMAIN_NAME = #{domainName,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      HOME_DIR = #{homeDir,jdbcType=VARCHAR},
+      SITE_TYPE = #{siteType,jdbcType=CHAR},
+      QUOTA_SIZE = #{quotaSize,jdbcType=DECIMAL},
+      OPEN_MARK = #{openMark,jdbcType=VARCHAR},
+      LOGIN_COUNT = #{loginCount,jdbcType=DECIMAL},
+      LOGIN_IP = #{loginIp,jdbcType=VARCHAR},
+      AGENT_CODE = #{agentCode,jdbcType=VARCHAR},
+      SERVICE_START_DATE = #{serviceStartDate,jdbcType=DATE},
+      SERVICE_END_DATE = #{serviceEndDate,jdbcType=DATE},
+      MODIFY_TIME = #{modifyTime,jdbcType=DATE},
+      SET_DNS = #{setDns,jdbcType=VARCHAR},
+      SET_WEB = #{setWeb,jdbcType=VARCHAR},
+      HOST_SERVER_GROUP = #{hostServerGroup,jdbcType=VARCHAR},
+      DATABASE_GROUP = #{databaseGroup,jdbcType=VARCHAR},
+      DB_TYPE = #{dbType,jdbcType=VARCHAR},
+      DB_SPACE_SIZE = #{dbSpaceSize,jdbcType=DECIMAL},
+      SERVICE_TYPE = #{serviceType,jdbcType=VARCHAR},
+      VIRTUALHOST_ID = #{virtualhostId,jdbcType=VARCHAR},
+      ICP_LOOP_STATE = #{icpLoopState,jdbcType=VARCHAR},
+      DATACENTER_COUNT = #{datacenterCount,jdbcType=DECIMAL},
+      IS_SELECT_INDEPENDENT_IP = #{isSelectIndependentIp,jdbcType=CHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

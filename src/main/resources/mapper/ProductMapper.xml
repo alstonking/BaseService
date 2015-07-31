@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinnet.baseservice.mapper.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.xinnet.baseservice.entity.Product">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="PRODUCT_CODE" jdbcType="VARCHAR" property="productCode" />
+    <result column="PRODUCT_NAME" jdbcType="VARCHAR" property="productName" />
+    <result column="PRODUCT_CLASS" jdbcType="VARCHAR" property="productClass" />
+    <result column="STATE" jdbcType="CHAR" property="state" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="MAXLIFE" jdbcType="DECIMAL" property="maxlife" />
+    <result column="RENEW_LIMIT" jdbcType="DECIMAL" property="renewLimit" />
+    <result column="SUB_PRODUCT" jdbcType="CHAR" property="subProduct" />
+    <result column="DOMAIN_TYPE" jdbcType="VARCHAR" property="domainType" />
+    <result column="MAX_SPACE_SIZE" jdbcType="DECIMAL" property="maxSpaceSize" />
+    <result column="SPACE_SIZE" jdbcType="DECIMAL" property="spaceSize" />
+    <result column="USER_AMOUNT" jdbcType="DECIMAL" property="userAmount" />
+    <result column="OPEN_LIMIT" jdbcType="DECIMAL" property="openLimit" />
+    <result column="REPAY_LIMIT" jdbcType="DECIMAL" property="repayLimit" />
+    <result column="IS_NEED_INTERVENTION" jdbcType="CHAR" property="isNeedIntervention" />
+    <result column="DB_SPACE_SIZE" jdbcType="DECIMAL" property="dbSpaceSize" />
+    <result column="MAIL_AMOUNT" jdbcType="DECIMAL" property="mailAmount" />
+    <result column="DB_TYPE" jdbcType="VARCHAR" property="dbType" />
+    <result column="SERVICE_TYPE" jdbcType="VARCHAR" property="serviceType" />
+    <result column="DOMAIN_AMOUNT" jdbcType="DECIMAL" property="domainAmount" />
+    <result column="STREAM_SIZE" jdbcType="DECIMAL" property="streamSize" />
+    <result column="GOODS_AMOUNT" jdbcType="DECIMAL" property="goodsAmount" />
+    <result column="NEWS_AMOUNT" jdbcType="DECIMAL" property="newsAmount" />
+    <result column="THEME_GRADE" jdbcType="DECIMAL" property="themeGrade" />
+    <result column="XINNET_COIN" jdbcType="DECIMAL" property="xinnetCoin" />
+    <result column="HISTORY_TEMPLATE_AMOUNT" jdbcType="DECIMAL" property="historyTemplateAmount" />
+    <result column="LANGUAGE" jdbcType="VARCHAR" property="language" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PRODUCT_CODE, PRODUCT_NAME, PRODUCT_CLASS, STATE, DESCRIPTION, MAXLIFE, RENEW_LIMIT, 
+    SUB_PRODUCT, DOMAIN_TYPE, MAX_SPACE_SIZE, SPACE_SIZE, USER_AMOUNT, OPEN_LIMIT, REPAY_LIMIT, 
+    IS_NEED_INTERVENTION, DB_SPACE_SIZE, MAIL_AMOUNT, DB_TYPE, SERVICE_TYPE, DOMAIN_AMOUNT, 
+    STREAM_SIZE, GOODS_AMOUNT, NEWS_AMOUNT, THEME_GRADE, XINNET_COIN, HISTORY_TEMPLATE_AMOUNT, 
+    LANGUAGE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PRODUCT_PRODUCT
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from PRODUCT_PRODUCT
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xinnet.baseservice.entity.Product">
+    insert into PRODUCT_PRODUCT (ID, PRODUCT_CODE, PRODUCT_NAME, 
+      PRODUCT_CLASS, STATE, DESCRIPTION, 
+      MAXLIFE, RENEW_LIMIT, SUB_PRODUCT, 
+      DOMAIN_TYPE, MAX_SPACE_SIZE, SPACE_SIZE, 
+      USER_AMOUNT, OPEN_LIMIT, REPAY_LIMIT, 
+      IS_NEED_INTERVENTION, DB_SPACE_SIZE, MAIL_AMOUNT, 
+      DB_TYPE, SERVICE_TYPE, DOMAIN_AMOUNT, 
+      STREAM_SIZE, GOODS_AMOUNT, NEWS_AMOUNT, 
+      THEME_GRADE, XINNET_COIN, HISTORY_TEMPLATE_AMOUNT, 
+      LANGUAGE)
+    values (#{id,jdbcType=DECIMAL}, #{productCode,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{productClass,jdbcType=VARCHAR}, #{state,jdbcType=CHAR}, #{description,jdbcType=VARCHAR}, 
+      #{maxlife,jdbcType=DECIMAL}, #{renewLimit,jdbcType=DECIMAL}, #{subProduct,jdbcType=CHAR}, 
+      #{domainType,jdbcType=VARCHAR}, #{maxSpaceSize,jdbcType=DECIMAL}, #{spaceSize,jdbcType=DECIMAL}, 
+      #{userAmount,jdbcType=DECIMAL}, #{openLimit,jdbcType=DECIMAL}, #{repayLimit,jdbcType=DECIMAL}, 
+      #{isNeedIntervention,jdbcType=CHAR}, #{dbSpaceSize,jdbcType=DECIMAL}, #{mailAmount,jdbcType=DECIMAL}, 
+      #{dbType,jdbcType=VARCHAR}, #{serviceType,jdbcType=VARCHAR}, #{domainAmount,jdbcType=DECIMAL}, 
+      #{streamSize,jdbcType=DECIMAL}, #{goodsAmount,jdbcType=DECIMAL}, #{newsAmount,jdbcType=DECIMAL}, 
+      #{themeGrade,jdbcType=DECIMAL}, #{xinnetCoin,jdbcType=DECIMAL}, #{historyTemplateAmount,jdbcType=DECIMAL}, 
+      #{language,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinnet.baseservice.entity.Product">
+    insert into PRODUCT_PRODUCT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="productCode != null">
+        PRODUCT_CODE,
+      </if>
+      <if test="productName != null">
+        PRODUCT_NAME,
+      </if>
+      <if test="productClass != null">
+        PRODUCT_CLASS,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="maxlife != null">
+        MAXLIFE,
+      </if>
+      <if test="renewLimit != null">
+        RENEW_LIMIT,
+      </if>
+      <if test="subProduct != null">
+        SUB_PRODUCT,
+      </if>
+      <if test="domainType != null">
+        DOMAIN_TYPE,
+      </if>
+      <if test="maxSpaceSize != null">
+        MAX_SPACE_SIZE,
+      </if>
+      <if test="spaceSize != null">
+        SPACE_SIZE,
+      </if>
+      <if test="userAmount != null">
+        USER_AMOUNT,
+      </if>
+      <if test="openLimit != null">
+        OPEN_LIMIT,
+      </if>
+      <if test="repayLimit != null">
+        REPAY_LIMIT,
+      </if>
+      <if test="isNeedIntervention != null">
+        IS_NEED_INTERVENTION,
+      </if>
+      <if test="dbSpaceSize != null">
+        DB_SPACE_SIZE,
+      </if>
+      <if test="mailAmount != null">
+        MAIL_AMOUNT,
+      </if>
+      <if test="dbType != null">
+        DB_TYPE,
+      </if>
+      <if test="serviceType != null">
+        SERVICE_TYPE,
+      </if>
+      <if test="domainAmount != null">
+        DOMAIN_AMOUNT,
+      </if>
+      <if test="streamSize != null">
+        STREAM_SIZE,
+      </if>
+      <if test="goodsAmount != null">
+        GOODS_AMOUNT,
+      </if>
+      <if test="newsAmount != null">
+        NEWS_AMOUNT,
+      </if>
+      <if test="themeGrade != null">
+        THEME_GRADE,
+      </if>
+      <if test="xinnetCoin != null">
+        XINNET_COIN,
+      </if>
+      <if test="historyTemplateAmount != null">
+        HISTORY_TEMPLATE_AMOUNT,
+      </if>
+      <if test="language != null">
+        LANGUAGE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productClass != null">
+        #{productClass,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="maxlife != null">
+        #{maxlife,jdbcType=DECIMAL},
+      </if>
+      <if test="renewLimit != null">
+        #{renewLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="subProduct != null">
+        #{subProduct,jdbcType=CHAR},
+      </if>
+      <if test="domainType != null">
+        #{domainType,jdbcType=VARCHAR},
+      </if>
+      <if test="maxSpaceSize != null">
+        #{maxSpaceSize,jdbcType=DECIMAL},
+      </if>
+      <if test="spaceSize != null">
+        #{spaceSize,jdbcType=DECIMAL},
+      </if>
+      <if test="userAmount != null">
+        #{userAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="openLimit != null">
+        #{openLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="repayLimit != null">
+        #{repayLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="isNeedIntervention != null">
+        #{isNeedIntervention,jdbcType=CHAR},
+      </if>
+      <if test="dbSpaceSize != null">
+        #{dbSpaceSize,jdbcType=DECIMAL},
+      </if>
+      <if test="mailAmount != null">
+        #{mailAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dbType != null">
+        #{dbType,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null">
+        #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="domainAmount != null">
+        #{domainAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="streamSize != null">
+        #{streamSize,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsAmount != null">
+        #{goodsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="newsAmount != null">
+        #{newsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="themeGrade != null">
+        #{themeGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="xinnetCoin != null">
+        #{xinnetCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="historyTemplateAmount != null">
+        #{historyTemplateAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinnet.baseservice.entity.Product">
+    update PRODUCT_PRODUCT
+    <set>
+      <if test="productCode != null">
+        PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productClass != null">
+        PRODUCT_CLASS = #{productClass,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="maxlife != null">
+        MAXLIFE = #{maxlife,jdbcType=DECIMAL},
+      </if>
+      <if test="renewLimit != null">
+        RENEW_LIMIT = #{renewLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="subProduct != null">
+        SUB_PRODUCT = #{subProduct,jdbcType=CHAR},
+      </if>
+      <if test="domainType != null">
+        DOMAIN_TYPE = #{domainType,jdbcType=VARCHAR},
+      </if>
+      <if test="maxSpaceSize != null">
+        MAX_SPACE_SIZE = #{maxSpaceSize,jdbcType=DECIMAL},
+      </if>
+      <if test="spaceSize != null">
+        SPACE_SIZE = #{spaceSize,jdbcType=DECIMAL},
+      </if>
+      <if test="userAmount != null">
+        USER_AMOUNT = #{userAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="openLimit != null">
+        OPEN_LIMIT = #{openLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="repayLimit != null">
+        REPAY_LIMIT = #{repayLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="isNeedIntervention != null">
+        IS_NEED_INTERVENTION = #{isNeedIntervention,jdbcType=CHAR},
+      </if>
+      <if test="dbSpaceSize != null">
+        DB_SPACE_SIZE = #{dbSpaceSize,jdbcType=DECIMAL},
+      </if>
+      <if test="mailAmount != null">
+        MAIL_AMOUNT = #{mailAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dbType != null">
+        DB_TYPE = #{dbType,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null">
+        SERVICE_TYPE = #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="domainAmount != null">
+        DOMAIN_AMOUNT = #{domainAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="streamSize != null">
+        STREAM_SIZE = #{streamSize,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsAmount != null">
+        GOODS_AMOUNT = #{goodsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="newsAmount != null">
+        NEWS_AMOUNT = #{newsAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="themeGrade != null">
+        THEME_GRADE = #{themeGrade,jdbcType=DECIMAL},
+      </if>
+      <if test="xinnetCoin != null">
+        XINNET_COIN = #{xinnetCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="historyTemplateAmount != null">
+        HISTORY_TEMPLATE_AMOUNT = #{historyTemplateAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="language != null">
+        LANGUAGE = #{language,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinnet.baseservice.entity.Product">
+    update PRODUCT_PRODUCT
+    set PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
+      PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+      PRODUCT_CLASS = #{productClass,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=CHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      MAXLIFE = #{maxlife,jdbcType=DECIMAL},
+      RENEW_LIMIT = #{renewLimit,jdbcType=DECIMAL},
+      SUB_PRODUCT = #{subProduct,jdbcType=CHAR},
+      DOMAIN_TYPE = #{domainType,jdbcType=VARCHAR},
+      MAX_SPACE_SIZE = #{maxSpaceSize,jdbcType=DECIMAL},
+      SPACE_SIZE = #{spaceSize,jdbcType=DECIMAL},
+      USER_AMOUNT = #{userAmount,jdbcType=DECIMAL},
+      OPEN_LIMIT = #{openLimit,jdbcType=DECIMAL},
+      REPAY_LIMIT = #{repayLimit,jdbcType=DECIMAL},
+      IS_NEED_INTERVENTION = #{isNeedIntervention,jdbcType=CHAR},
+      DB_SPACE_SIZE = #{dbSpaceSize,jdbcType=DECIMAL},
+      MAIL_AMOUNT = #{mailAmount,jdbcType=DECIMAL},
+      DB_TYPE = #{dbType,jdbcType=VARCHAR},
+      SERVICE_TYPE = #{serviceType,jdbcType=VARCHAR},
+      DOMAIN_AMOUNT = #{domainAmount,jdbcType=DECIMAL},
+      STREAM_SIZE = #{streamSize,jdbcType=DECIMAL},
+      GOODS_AMOUNT = #{goodsAmount,jdbcType=DECIMAL},
+      NEWS_AMOUNT = #{newsAmount,jdbcType=DECIMAL},
+      THEME_GRADE = #{themeGrade,jdbcType=DECIMAL},
+      XINNET_COIN = #{xinnetCoin,jdbcType=DECIMAL},
+      HISTORY_TEMPLATE_AMOUNT = #{historyTemplateAmount,jdbcType=DECIMAL},
+      LANGUAGE = #{language,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

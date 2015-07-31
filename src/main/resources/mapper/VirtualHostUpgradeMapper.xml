@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinnet.baseservice.mapper.VirtualHostUpgradeMapper">
+  <resultMap id="BaseResultMap" type="com.xinnet.baseservice.entity.VirtualHostUpgrade">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="NEW_SERVICE_CODE" jdbcType="VARCHAR" property="newServiceCode" />
+    <result column="OLD_SERVICE_CODE" jdbcType="VARCHAR" property="oldServiceCode" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+    <result column="OLD_PRODUCT_CODE" jdbcType="VARCHAR" property="oldProductCode" />
+    <result column="NEW_PRODUCT_CODE" jdbcType="VARCHAR" property="newProductCode" />
+    <result column="NEW_GOODS_CODE" jdbcType="VARCHAR" property="newGoodsCode" />
+    <result column="OLD_GOODS_CODE" jdbcType="VARCHAR" property="oldGoodsCode" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="TIME_AMOUNT" jdbcType="DECIMAL" property="timeAmount" />
+    <result column="TIME_UNIT" jdbcType="VARCHAR" property="timeUnit" />
+    <result column="BEGIN_TIME" jdbcType="DATE" property="beginTime" />
+    <result column="OPERATE_NUM" jdbcType="DECIMAL" property="operateNum" />
+    <result column="VIRTUALHOST_ID" jdbcType="VARCHAR" property="virtualhostId" />
+    <result column="DB_TYPE" jdbcType="VARCHAR" property="dbType" />
+    <result column="NEW_PASSWORD" jdbcType="VARCHAR" property="newPassword" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NEW_SERVICE_CODE, OLD_SERVICE_CODE, DOMAIN_NAME, OLD_PRODUCT_CODE, NEW_PRODUCT_CODE, 
+    NEW_GOODS_CODE, OLD_GOODS_CODE, STATE, TIME_AMOUNT, TIME_UNIT, BEGIN_TIME, OPERATE_NUM, 
+    VIRTUALHOST_ID, DB_TYPE, NEW_PASSWORD
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SERVICE_VIRTUALHOSTUPGRADE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from SERVICE_VIRTUALHOSTUPGRADE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xinnet.baseservice.entity.VirtualHostUpgrade">
+    insert into SERVICE_VIRTUALHOSTUPGRADE (ID, NEW_SERVICE_CODE, OLD_SERVICE_CODE, 
+      DOMAIN_NAME, OLD_PRODUCT_CODE, NEW_PRODUCT_CODE, 
+      NEW_GOODS_CODE, OLD_GOODS_CODE, STATE, 
+      TIME_AMOUNT, TIME_UNIT, BEGIN_TIME, 
+      OPERATE_NUM, VIRTUALHOST_ID, DB_TYPE, 
+      NEW_PASSWORD)
+    values (#{id,jdbcType=DECIMAL}, #{newServiceCode,jdbcType=VARCHAR}, #{oldServiceCode,jdbcType=VARCHAR}, 
+      #{domainName,jdbcType=VARCHAR}, #{oldProductCode,jdbcType=VARCHAR}, #{newProductCode,jdbcType=VARCHAR}, 
+      #{newGoodsCode,jdbcType=VARCHAR}, #{oldGoodsCode,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{timeAmount,jdbcType=DECIMAL}, #{timeUnit,jdbcType=VARCHAR}, #{beginTime,jdbcType=DATE}, 
+      #{operateNum,jdbcType=DECIMAL}, #{virtualhostId,jdbcType=VARCHAR}, #{dbType,jdbcType=VARCHAR}, 
+      #{newPassword,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinnet.baseservice.entity.VirtualHostUpgrade">
+    insert into SERVICE_VIRTUALHOSTUPGRADE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="newServiceCode != null">
+        NEW_SERVICE_CODE,
+      </if>
+      <if test="oldServiceCode != null">
+        OLD_SERVICE_CODE,
+      </if>
+      <if test="domainName != null">
+        DOMAIN_NAME,
+      </if>
+      <if test="oldProductCode != null">
+        OLD_PRODUCT_CODE,
+      </if>
+      <if test="newProductCode != null">
+        NEW_PRODUCT_CODE,
+      </if>
+      <if test="newGoodsCode != null">
+        NEW_GOODS_CODE,
+      </if>
+      <if test="oldGoodsCode != null">
+        OLD_GOODS_CODE,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="timeAmount != null">
+        TIME_AMOUNT,
+      </if>
+      <if test="timeUnit != null">
+        TIME_UNIT,
+      </if>
+      <if test="beginTime != null">
+        BEGIN_TIME,
+      </if>
+      <if test="operateNum != null">
+        OPERATE_NUM,
+      </if>
+      <if test="virtualhostId != null">
+        VIRTUALHOST_ID,
+      </if>
+      <if test="dbType != null">
+        DB_TYPE,
+      </if>
+      <if test="newPassword != null">
+        NEW_PASSWORD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="newServiceCode != null">
+        #{newServiceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldServiceCode != null">
+        #{oldServiceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="domainName != null">
+        #{domainName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldProductCode != null">
+        #{oldProductCode,jdbcType=VARCHAR},
+      </if>
+      <if test="newProductCode != null">
+        #{newProductCode,jdbcType=VARCHAR},
+      </if>
+      <if test="newGoodsCode != null">
+        #{newGoodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldGoodsCode != null">
+        #{oldGoodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="timeAmount != null">
+        #{timeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="timeUnit != null">
+        #{timeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=DATE},
+      </if>
+      <if test="operateNum != null">
+        #{operateNum,jdbcType=DECIMAL},
+      </if>
+      <if test="virtualhostId != null">
+        #{virtualhostId,jdbcType=VARCHAR},
+      </if>
+      <if test="dbType != null">
+        #{dbType,jdbcType=VARCHAR},
+      </if>
+      <if test="newPassword != null">
+        #{newPassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinnet.baseservice.entity.VirtualHostUpgrade">
+    update SERVICE_VIRTUALHOSTUPGRADE
+    <set>
+      <if test="newServiceCode != null">
+        NEW_SERVICE_CODE = #{newServiceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldServiceCode != null">
+        OLD_SERVICE_CODE = #{oldServiceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="domainName != null">
+        DOMAIN_NAME = #{domainName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldProductCode != null">
+        OLD_PRODUCT_CODE = #{oldProductCode,jdbcType=VARCHAR},
+      </if>
+      <if test="newProductCode != null">
+        NEW_PRODUCT_CODE = #{newProductCode,jdbcType=VARCHAR},
+      </if>
+      <if test="newGoodsCode != null">
+        NEW_GOODS_CODE = #{newGoodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldGoodsCode != null">
+        OLD_GOODS_CODE = #{oldGoodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="timeAmount != null">
+        TIME_AMOUNT = #{timeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="timeUnit != null">
+        TIME_UNIT = #{timeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        BEGIN_TIME = #{beginTime,jdbcType=DATE},
+      </if>
+      <if test="operateNum != null">
+        OPERATE_NUM = #{operateNum,jdbcType=DECIMAL},
+      </if>
+      <if test="virtualhostId != null">
+        VIRTUALHOST_ID = #{virtualhostId,jdbcType=VARCHAR},
+      </if>
+      <if test="dbType != null">
+        DB_TYPE = #{dbType,jdbcType=VARCHAR},
+      </if>
+      <if test="newPassword != null">
+        NEW_PASSWORD = #{newPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinnet.baseservice.entity.VirtualHostUpgrade">
+    update SERVICE_VIRTUALHOSTUPGRADE
+    set NEW_SERVICE_CODE = #{newServiceCode,jdbcType=VARCHAR},
+      OLD_SERVICE_CODE = #{oldServiceCode,jdbcType=VARCHAR},
+      DOMAIN_NAME = #{domainName,jdbcType=VARCHAR},
+      OLD_PRODUCT_CODE = #{oldProductCode,jdbcType=VARCHAR},
+      NEW_PRODUCT_CODE = #{newProductCode,jdbcType=VARCHAR},
+      NEW_GOODS_CODE = #{newGoodsCode,jdbcType=VARCHAR},
+      OLD_GOODS_CODE = #{oldGoodsCode,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      TIME_AMOUNT = #{timeAmount,jdbcType=DECIMAL},
+      TIME_UNIT = #{timeUnit,jdbcType=VARCHAR},
+      BEGIN_TIME = #{beginTime,jdbcType=DATE},
+      OPERATE_NUM = #{operateNum,jdbcType=DECIMAL},
+      VIRTUALHOST_ID = #{virtualhostId,jdbcType=VARCHAR},
+      DB_TYPE = #{dbType,jdbcType=VARCHAR},
+      NEW_PASSWORD = #{newPassword,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
